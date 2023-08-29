@@ -1,0 +1,6 @@
+transmission_rpc
+py7zr
+mysql-connector-python
+chardet
+waybackpy
+beautifulsoup4
