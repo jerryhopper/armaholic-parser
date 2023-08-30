@@ -45,8 +45,13 @@ class parser:
                         return el
                 except Exception as e:
                     pass
-        raise Exception("No element '"+tag+"' found where id="+id)
+        raise Exception("No element '"+tag+"' found where class="+classname)
     
+    def getChildWithTag(self,element,tag):
+        for el in element.find_all(recursive=False):
+            if el.name == tag:
+                return el
+        raise Exception("No element '"+tag+"' found ")
 
 
     def elementPropertyHelper(self,element):
@@ -701,7 +706,7 @@ class parser:
             print(x)
 
         #print(x)
-
+        self.page_title_element = wrap.find(id="title")
         #raise Exception("fin")   
 
 
@@ -747,6 +752,7 @@ class parser:
         if x[4]!="br":
             raise Exception("4 != br")
         
+        self.page_title_element = bigwrap.find(id="title")
 
         #
 
@@ -777,8 +783,8 @@ class parser:
             #print(body)
             #exit()  
             #  
-
-        x = self.listChildrenHelper(wrap)
+        self.page_title_element = wrap.find(id="title")
+        #x = self.listChildrenHelper(wrap)
         #print(x)
         #exit("+++++++++++++++++++++++")
 
@@ -830,7 +836,7 @@ class parser:
         if x[8]!="div.download":
             raise Exception("8 != div.download")
         
-
+        self.page_title_element = wrap.find(id="title")
 
         #exit("+++++++++++++++++++++++")
         
@@ -1167,9 +1173,18 @@ class parser:
             raise Exception("1 != table")
         if x[2]!="div.footer":
             raise Exception("2 != div.footer")
-        print(x)
-        exit()
+        #print(x)
 
+        table = self.getChildWithTag(body,"table")
+
+        #print(table)
+        #x = self.listChildrenHelper(table)
+        #print(x)
+        
+
+        self.page_title_element = table.find(id="fondonews")
+
+        
 
     def layout28(self,body):
         
@@ -1188,7 +1203,18 @@ class parser:
             raise Exception("1 != map")
         if x[2]!="div#wrap":
             raise Exception("2 != div#wrap")
+        
+        wrap = self.getChildWithId( wrap, 'div', 'wrap')
+        x = self.listChildrenHelper(wrap)
+
         #print(x)
+        #print(wrap)
+
+        ## this one sometimes has title, or fondonews as sectionlist.
+        ## need to re-check this.
+        self.page_title_element = wrap.find(id="title")
+        #self.page_title_element = body.find(id="fondonews")
+
         #exit()
 
 
@@ -1212,7 +1238,7 @@ class parser:
             raise Exception("5 != br")
         if x[6]!="strong":
             raise Exception("6 != strong")
-        
+        self.page_title_element = body.find(id="title")
         #print(x)
         #exit()
 
@@ -1236,6 +1262,7 @@ class parser:
             raise Exception("5 != div.footer")       
         #print(x)
         #exit()
+        self.page_title_element = body.find(id="title")
 
 
     def layout31(self,body):
@@ -1249,8 +1276,9 @@ class parser:
             raise Exception("2 != tr")
         if x[3]!="div.footer":
             raise Exception("3 != div.footer")
-        #print(x)
+        #print(body)
         #exit()
+        self.page_title_element = body.find(id="fondonews")
 
     def layout32(self,body):
         x = self.listChildrenHelper(body)
@@ -1265,6 +1293,9 @@ class parser:
             raise Exception("3 != div.wrapper")
         #print(x)
         #exit()
+        self.page_title_element=0
+        self.armaholicSection="casino_pages"
+        #self.page_title_element = body.find(id="title")
 
 
     def layout33(self,body):
@@ -1288,7 +1319,10 @@ class parser:
         if x[6]!="div.footer":
             raise Exception("6 != div.footer")
         
-        #print(x)
+        #self.page_title_element=0
+        #self.armaholicSection="casino_pages"
+        self.page_title_element = body.find(id="title")
+        #print(body.find(id="title"))
         #exit()
 
     def layout34(self,body):

@@ -9,7 +9,8 @@ from lib import fn_layoutparser
 
 # assign directory
 directory = 'cache'
- 
+
+startTime = time.time() 
 
 fix=0 
 # iterate over files in
@@ -40,7 +41,7 @@ except Exception as e:
     pass
 #print (sys.argv)
 #exit()
-
+errorLayouts = []
 sectionlist = []
 itemteller = 0
 newsteller = 0
@@ -103,21 +104,24 @@ for armaholicId in idList:
 
             #
             
-            #part = detectedpage.armaholicSection[:4]
-            #if part=="arma":
-            #    #print("PROCESS THE ITEM PAGE")
-            #    itemteller +=1  
-            #    if detectedpage.armaholicSection not in sectionlist:
-            #        sectionlist.append(detectedpage.armaholicSection)
+            part = pagelayout.armaholicSection[:4]
+            if part=="arma":
+                #print("PROCESS THE ITEM PAGE")
+                itemteller +=1  
+                if pagelayout.armaholicSection not in sectionlist:
+                    sectionlist.append(pagelayout.armaholicSection)
             #    # 
             #    # do some parsing.
             #    #
             #    fn_pageparser.parser(detectedpage.soup)
             
             
-            #elif part =="news":
-            #    #print("PROCESS NEWSPAGE")
-            #    newsteller +=1
+            elif part =="news":
+                #print("PROCESS NEWSPAGE")
+                newsteller +=1
+                if pagelayout.armaholicSection not in sectionlist:
+                    sectionlist.append(pagelayout.armaholicSection)
+            
             #    os.rename( cachefile, "newscache/page_"+str(armaholicId)+".html")  
             #    #"cache/page_"+str(armaholicId)+".html"
             #else:
@@ -125,17 +129,28 @@ for armaholicId in idList:
             #f = open(cachefile,"r")
             #string = f.read()
             #f.close() 
+            elif part =="UNKN":
+                error +=1
+                if pagelayout.foundLayout not in errorLayouts:
+                    errorLayouts.append(pagelayout.foundLayout)
+                
+
 
             
             #time.sleep(.1)
 
+endTime = time.time()
 
 
 print("total pages in cache :"+str(teller))
 print("errorneous pages.... :"+str(error))
 print("file items: "+str(itemteller))
 print("news items: "+str(newsteller))
+print("Parsing time: "+str(endTime - startTime)+" seconds.")
+print("SECTIONS:")
 print(sectionlist)
+print("Layout with unknowns: ")
+print(errorLayouts)
 
 
 exit()
