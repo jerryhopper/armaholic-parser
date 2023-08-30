@@ -162,14 +162,14 @@ print("Parsing time: "+str(endTime - startTime)+" seconds.")
 f = open("sectionlist.txt", "w")
 for dasection in sectionlist:
     #print(dasection)
-    f.write(dasection)
+    f.write(dasection+"\n")
 f.close()
 print("SECTIONS: written to sectionlist.txt")
 
 f = open("itemlist.txt", "w")
 for daitem in itemlist:
     #print(dasection)
-    f.write(daitem)
+    f.write(daitem+"\n")
 f.close()
 print("ITEMS: written to itemlist.txt")
 
