@@ -28,6 +28,19 @@ idList.sort()
 
 #print(idList)
 #exit()
+
+
+#print ('Number of arguments:'+ str(len(sys.argv))+' arguments.')
+#print ('Argument List:'+ str(sys.argv))
+
+try:
+    startfromArmaholicId = int(sys.argv[1])
+except Exception as e:
+    startfromArmaholicId = 0
+    pass
+#print (sys.argv)
+#exit()
+
 sectionlist = []
 itemteller = 0
 newsteller = 0
@@ -38,7 +51,7 @@ for armaholicId in idList:
     #cachefile = os.path.join(directory, filename)
 
     # Skip function
-    if armaholicId>1:
+    if armaholicId>startfromArmaholicId:
 
 
         # checking if it is a file
@@ -58,12 +71,14 @@ for armaholicId in idList:
                 
                 pagelayout.foundLayout
                 pagelayout.armaholicSection
+                #pagelayout.armaholicId
 
                 if pagelayout.page_title_element == None:
                     exit("Exit on: "+ str(pagelayout.foundLayout))
-                else:
-                    print(pagelayout.armaholicSection)
-
+                #else:
+                #    print(pagelayout.armaholicSection)
+                #33000
+                print("id: {id:5d}, l: {l:2d} s: {s:35} - {t}".format(id = armaholicId,l=pagelayout.foundLayout, s = pagelayout.armaholicSection, t=pagelayout.page_head_title))
                 #detectedpage = fn_pagedetector.detector(string)
                 
                 #if detectedpage.page_is_valid == False:
