@@ -1,2 +1,3 @@
 cache
-lib/__pycache__
+lib/__pycache__/*
+app/lib/__pycache__
