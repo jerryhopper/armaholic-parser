@@ -41,6 +41,7 @@ except Exception as e:
     pass
 #print (sys.argv)
 #exit()
+unknownlist = []
 errorLayouts = []
 sectionlist = []
 itemlist=[]
@@ -142,7 +143,9 @@ for armaholicId in idList:
                 error +=1
                 if pagelayout.foundLayout not in errorLayouts:
                     errorLayouts.append(pagelayout.foundLayout)
-                    
+
+                if armaholicId not in unknownlist:
+                    unknownlist.append(armaholicId)    
                 
 
 
@@ -158,27 +161,52 @@ print("file items: "+str(itemteller))
 print("news items: "+str(newsteller))
 print("Parsing time: "+str(endTime - startTime)+" seconds.")
 
+try:
+    os.unlink("sectionlist.txt")
+except:
+    pass
 
 f = open("sectionlist.txt", "w")
+sectionlist.sort()
 for dasection in sectionlist:
     #print(dasection)
-    f.write(dasection+"\n")
+    f.write(str(dasection)+"\n")
 f.close()
 print("SECTIONS: written to sectionlist.txt")
+
+
+try:
+    os.unlink("itemlist.txt")
+except:
+    pass
 
 f = open("itemlist.txt", "w")
 for daitem in itemlist:
     #print(dasection)
-    f.write(daitem+"\n")
+    f.write(str(daitem)+"\n")
 f.close()
 print("ITEMS: written to itemlist.txt")
 
 
+try:
+    os.unlink("unknownlist.txt")
+except:
+    pass
+f = open("unknownlist.txt", "w")
+for unknitem in unknownlist:
+    #print(dasection)
+    f.write(str(unknitem)+"\n")
+f.close()
+print("UNKNOWNS: written to unknownlist.txt")
+
+
+#unknownlist
+
 #print(itemlist)
 
 
-print("Layout with unknowns: ")
-print(errorLayouts)
+#print("Layout with unknowns: ")
+#print(errorLayouts)
 
 
 
