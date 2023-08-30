@@ -1918,7 +1918,7 @@ class parser:
             self.armaholicSection = titleLinkList[-2]
             self.armaholicId = int(titleLinkList[-1])
         except Exception as e:
-            self.armaholicSection = "UKNOWN"
+            self.armaholicSection = "UNKNOWN"
             pass
         return self.armaholicSection
 

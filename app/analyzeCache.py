@@ -43,6 +43,7 @@ except Exception as e:
 #exit()
 errorLayouts = []
 sectionlist = []
+itemlist=[]
 itemteller = 0
 newsteller = 0
 for armaholicId in idList:
@@ -110,6 +111,13 @@ for armaholicId in idList:
                 itemteller +=1  
                 if pagelayout.armaholicSection not in sectionlist:
                     sectionlist.append(pagelayout.armaholicSection)
+                itemlist.append(str(armaholicId)+","+str(pagelayout.foundLayout)+","+pagelayout.armaholicSection  )
+            elif part=="ofp_":
+                #print("PROCESS THE ITEM PAGE")
+                itemteller +=1  
+                if pagelayout.armaholicSection not in sectionlist:
+                    sectionlist.append(pagelayout.armaholicSection)
+                itemlist.append(str(armaholicId)+","+str(pagelayout.foundLayout)+","+pagelayout.armaholicSection  )
             #    # 
             #    # do some parsing.
             #    #
@@ -129,10 +137,12 @@ for armaholicId in idList:
             #f = open(cachefile,"r")
             #string = f.read()
             #f.close() 
-            elif part =="UNKN":
+            #print("'"+pagelayout.armaholicSection+"'")
+            elif pagelayout.armaholicSection == "UNKNOWN":
                 error +=1
                 if pagelayout.foundLayout not in errorLayouts:
                     errorLayouts.append(pagelayout.foundLayout)
+                    
                 
 
 
@@ -147,10 +157,31 @@ print("errorneous pages.... :"+str(error))
 print("file items: "+str(itemteller))
 print("news items: "+str(newsteller))
 print("Parsing time: "+str(endTime - startTime)+" seconds.")
-print("SECTIONS:")
-print(sectionlist)
+
+
+f = open("sectionlist.txt", "w")
+for dasection in sectionlist:
+    #print(dasection)
+    f.write(dasection)
+f.close()
+print("SECTIONS: written to sectionlist.txt")
+
+f = open("itemlist.txt", "w")
+for daitem in itemlist:
+    #print(dasection)
+    f.write(daitem)
+f.close()
+print("ITEMS: written to itemlist.txt")
+
+
+#print(itemlist)
+
+
 print("Layout with unknowns: ")
 print(errorLayouts)
+
+
+
 
 
 exit()
