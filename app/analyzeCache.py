@@ -54,8 +54,15 @@ for armaholicId in idList:
 
                 soup = BeautifulSoup(string, "html.parser")
 
-                fn_layoutparser.parser(soup)
+                pagelayout = fn_layoutparser.parser(soup)
+                
+                pagelayout.foundLayout
+                pagelayout.armaholicSection
 
+                if pagelayout.page_title_element == None:
+                    exit("Exit on: "+ str(pagelayout.foundLayout))
+                else:
+                    print(pagelayout.armaholicSection)
 
                 #detectedpage = fn_pagedetector.detector(string)
                 

@@ -7,6 +7,8 @@ from datetime import datetime
 class parser:
     debug=1
     content=False
+    page_title_element=None
+    foundLayout=False
     
     def __str__(self) -> str:
         
@@ -128,6 +130,15 @@ class parser:
         if x[6]!='div.footer':
             raise Exception("7 != div.footer") 
         
+        #print(wrap)
+        #self.page_title_element=0
+        #self.armaholicSection="_site_pages"
+        self.page_title_element = wrap.find(id="title")
+        #print(self.page_title_element)
+        #exit()
+
+        return wrap
+        
     def layout2(self,body):
         
         
@@ -157,7 +168,12 @@ class parser:
         
         #print("layout2")
         #print(x)
-
+        #self.page_title_element=0
+        #self.armaholicSection="_newsarma_"
+        self.page_title_element = body.find(id="title")
+        #print(wrap)
+        #exit()
+        return body
         
     def layout3(self,body):
         
@@ -230,8 +246,14 @@ class parser:
             raise Exception("6 != div.footer")    
             print(x)
 
-
+        #print(wrap)
+        #self.page_title_element=0
+        #self.armaholicSection="_site_pages"
+        self.page_title_element = wrap.find(id="title")
+        #print(self.page_title_element)
+        #exit()
         #raise Exception("fin")   
+        return wrap
     
 
     def layout5(self,body):
@@ -274,8 +296,13 @@ class parser:
             raise Exception("6 != div.footer")    
             print(x)
 
-
+        #print(wrap)
+        #self.page_title_element=0
+        #self.armaholicSection="_site_pages"
+        self.page_title_element = body.find(id="title")
+        #
         #raise Exception("fin")   
+        return wrap
 
 
     def layout6(self,body):
@@ -318,7 +345,12 @@ class parser:
             raise Exception("6 != div.footer")    
             print(x)
 
-
+        #self.page_title_element=0
+        #self.armaholicSection="_newsarma_"
+        self.page_title_element = wrap.find(id="title")
+        #print(wrap)
+        #exit()
+        return wrap
         #raise Exception("fin")   
 
 
@@ -454,7 +486,13 @@ class parser:
             raise Exception("12 != div.footer")    
             print(x)
 
+        #print(wrap)
+        #self.page_title_element=0
+        #self.armaholicSection="_site_pages"
+        self.page_title_element = body.find(id="title")
+        #
 
+        return body
         #raise Exception("fin")   
 
     def layout9(self,body):
@@ -488,7 +526,7 @@ class parser:
             raise Exception("6 != div.footer")    
             print(x)
 
-
+        self.page_title_element = body.find(id="title")
         #raise Exception("fin")   
 
 
@@ -526,6 +564,8 @@ class parser:
             raise Exception("2 != div#wrap")    
             print(x)
 
+        #self.page_title_element = body.find(id="title")
+
 
 
 
@@ -534,6 +574,8 @@ class parser:
         y = self.listChildrenHelper(wrap)
         #print(y)
         
+
+
         if y[0]!='div#container':
             raise Exception("0 != div#container")    
         
@@ -547,6 +589,8 @@ class parser:
         if y[3]!='div#title':
             raise Exception("3 != div#title")    
             print(x)
+        
+        self.page_title_element = body.find(id="title")
 
         if y[4]!='div#subtitle':
             raise Exception("4 != div#subtitle")    
@@ -810,6 +854,12 @@ class parser:
         if x[2]!="table":
             raise Exception("2 != table")
 
+
+        self.page_title_element = wrap.find(id="fondonews")
+        #print(self.page_title_element)
+        #exit()
+        return wrap
+
     
 
     def layout16(self,body):
@@ -830,10 +880,15 @@ class parser:
         if x[1]!="div#title":
             raise Exception("1 != div#title")
         if x[2]!="div#subtitle":
-            raise Exception("1 != div#subtitle")
+            raise Exception("2 != div#subtitle")
         if x[3]!="div.pagedlbg":
-            raise Exception("1 != div.pagedlbg")
+            raise Exception("3 != div.pagedlbg")
         
+
+        self.page_title_element = wrap.find(id="title")
+        #print(self.page_title_element)
+
+        return wrap        
         #exit()
 
     def layout17(self,body):
@@ -857,6 +912,13 @@ class parser:
             raise Exception("2 != div#main")
         if x[3]!="div.footer":
             raise Exception("3 != div.footer")
+        
+        #print(wrap)
+        self.page_title_element=0
+        self.armaholicSection="_site_pages"
+        #self.page_title_element = wrap.find(id="fondonews")
+        #print(self.page_title_element)
+        #exit()
 
 
     def layout18(self,body):
@@ -882,6 +944,12 @@ class parser:
             raise Exception("3 != div#nav_left")
         if x[4]!="div#nav":
             raise Exception("4 != div#nav")
+        #print(wrap)
+        #self.page_title_element=0
+        #self.armaholicSection="_site_pages"
+        self.page_title_element = wrap.find(id="title")
+        #print(self.page_title_element)
+        #exit()
 
 
     def layout19(self,body):
@@ -904,6 +972,15 @@ class parser:
         if x[6]!="table.download":
             raise Exception("4 != table.download")
 
+        #print(wrap)
+        #self.page_title_element=0
+        #self.armaholicSection="_site_pages"
+        self.page_title_element = wrap.find(id="title")
+        #print(self.page_title_element)
+        #exit()
+        #raise Exception("fin")  
+        return body
+
     def layout20(self,body):
         #print("L16")
         x = self.listChildrenHelper(body)
@@ -915,6 +992,15 @@ class parser:
             raise Exception("1 != div.header")
         if x[2]!="div.navbar.futuristic":
             raise Exception("2 != div.navbar.futuristic")
+
+        #print(body)
+        #exit()
+        self.page_title_element=0
+        self.armaholicSection="_casino_pages"
+        #self.page_title_element = body.find(id="title")
+        #
+
+        return body
     
     def layout21(self,body):
         
@@ -933,7 +1019,14 @@ class parser:
             raise Exception("2 != div.footer")
         #print(x)
         #exit()
-        
+        #exit()
+        self.page_title_element=0
+        self.armaholicSection="_newsarma_"
+        #self.page_title_element = body.find(id="title")
+        #print(wrap)
+        #exit()
+        return wrap
+    
     def layout22(self,body):
         
         #try:
@@ -955,6 +1048,12 @@ class parser:
             raise Exception("4 != div.cobo_dark")
         #print(x)
         #exit()
+        #self.page_title_element=0
+        #self.armaholicSection="_newsarma_"
+        self.page_title_element = body.find(id="title")
+        #print(body)
+        #exit()
+        return body
 
 
     def layout23(self,body):
@@ -973,6 +1072,12 @@ class parser:
             raise Exception("0 != div#container")
         if x[1]!="table":
             raise Exception("1 != table")
+        
+        #print(body)
+
+        self.page_title_element = body.find(id="fondonews")
+
+        return wrap
 
     def layout24(self,body):
         
@@ -1003,6 +1108,10 @@ class parser:
         #    raise Exception("4 != div.cobo_dark")
         #print(x)
         #exit()
+        self.page_title_element = body.find(id="title")
+
+
+
     def layout25(self,body):
         
         try:
@@ -1023,6 +1132,7 @@ class parser:
             raise Exception("3 != div.footer")
         #print(x)
         #exit()
+        self.page_title_element = wrap.find(id="title")
 
     def layout26(self,body):
         
@@ -1177,23 +1287,35 @@ class parser:
     def layout34(self,body):
         x = self.listChildrenHelper(body)
         
-        print(x)
-        exit()
-
-        if x[0]!="div#wrap":
-            raise Exception("0 != div#wrap")
-        if x[1]!="div#main":
-            raise Exception("1 != div#main")
+        
+        if x[0]!="div#container":
+            raise Exception("0 != div#container")
+        if x[1]!="div":
+            raise Exception("1 != div")
         if x[2]!="br":
             raise Exception("2 != br")
-        if x[3]!="br":
-            raise Exception("3 != br")
-        if x[4]!="div#fondonews":
-            raise Exception("4 != div#fondonews")
-        if x[5]!="hr":
-            raise Exception("5 != hr")
-        if x[6]!="div.footer":
-            raise Exception("6 != div.footer")
+        if x[3]!="div#title":
+            raise Exception("3 != div#title")
+        if x[4]!="div#subtitle":
+            raise Exception("4 != div#subtitle")
+        if x[5]!="div#main":
+            raise Exception("5 != div#main")
+        if x[6]!="table.download":
+            raise Exception("6 != table.download")
+        if x[7]!="br":
+            raise Exception("6 != br")
+        #if x[8]!="strong":
+        #    raise Exception("6 != strong")
+        
+        #print(wrap)
+        #self.page_title_element=0
+        #self.armaholicSection="_site_pages"
+        self.page_title_element = body.find(id="title")
+        #print(self.page_title_element)
+        #exit()
+        
+        return body
+        
     
 
 
@@ -1258,12 +1380,16 @@ class parser:
 
 
 
-        foundLayout=False
+        self.foundLayout=False
 
         try:
-            if foundLayout == False:
-                self.layout1(body)
-                foundLayout=1
+            if self.foundLayout == False:
+                result = self.layout1(body)
+                self.foundLayout=1
+                
+                #print(self.armaholicSection)
+                #print(result)
+                #exit(1)
         except Exception as e:
             #print(body)
             #print(e)
@@ -1273,9 +1399,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout2(body)
-                foundLayout=2
+                self.foundLayout=2
         except Exception as e:
             #print(e)
             #print("Not layout 2")
@@ -1284,9 +1410,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout3(body)
-                foundLayout=3
+                self.foundLayout=3
         except Exception as e:
             #print(e)
             #print("Not layout 3")
@@ -1295,9 +1421,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout4(body)
-                foundLayout=4
+                self.foundLayout=4
         except Exception as e:
             #print(e)
             #print("Not layout 4")
@@ -1306,9 +1432,9 @@ class parser:
             #exit()
         
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout5(body)
-                foundLayout=5
+                self.foundLayout=5
         except Exception as e:
             #print(e)
             #print("Not layout 5")
@@ -1317,9 +1443,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout6(body)
-                foundLayout=6
+                self.foundLayout=6
         except Exception as e:
             #print(e)
             #print("Not layout 6")
@@ -1328,9 +1454,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout7(body)
-                foundLayout=7
+                self.foundLayout=7
         except Exception as e:
             #print(e)
             #print("Not layout 7")
@@ -1339,9 +1465,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout8(body)
-                foundLayout=8
+                self.foundLayout=8
                 
         except Exception as e:
             #print(e)
@@ -1351,9 +1477,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout9(body)
-                foundLayout=9
+                self.foundLayout=9
                 
         except Exception as e:
             #print(e)
@@ -1363,9 +1489,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout10(body)
-                foundLayout=10
+                self.foundLayout=10
                 
         except Exception as e:
             #print(e)
@@ -1376,9 +1502,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout11(body)
-                foundLayout=11
+                self.foundLayout=11
                 
         except Exception as e:
             #print(e)
@@ -1388,9 +1514,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout12(body)
-                foundLayout=12
+                self.foundLayout=12
                 
         except Exception as e:
             #print(e)
@@ -1402,9 +1528,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout13(body)
-                foundLayout=13
+                self.foundLayout=13
                 
         except Exception as e:
             #print(e)
@@ -1414,9 +1540,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout14(body)
-                foundLayout=14
+                self.foundLayout=14
                 
         except Exception as e:
             #print(e)
@@ -1426,9 +1552,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout15(body)
-                foundLayout=15
+                self.foundLayout=15
                 
         except Exception as e:
             #print(e)
@@ -1438,9 +1564,9 @@ class parser:
             #exit()
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout16(body)
-                foundLayout=16
+                self.foundLayout=16
                 
         except Exception as e:
             #print(e)
@@ -1449,9 +1575,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout17(body)
-                foundLayout=17
+                self.foundLayout=17
         except Exception as e:
             #print(e)
             #print("Not layout 17")
@@ -1459,9 +1585,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout18(body)
-                foundLayout=18
+                self.foundLayout=18
                 
         except Exception as e:
             #print(e)
@@ -1469,9 +1595,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout19(body)
-                foundLayout=19
+                self.foundLayout=19
                 
         except Exception as e:
             #print(e)
@@ -1480,9 +1606,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout20(body)
-                foundLayout=20
+                self.foundLayout=20
                 
         except Exception as e:
             #print(e)
@@ -1490,9 +1616,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout21(body)
-                foundLayout=21
+                self.foundLayout=21
                 
         except Exception as e:
             #print(e)
@@ -1500,9 +1626,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout22(body)
-                foundLayout=22
+                self.foundLayout=22
                 
         except Exception as e:
             #print(e)
@@ -1511,9 +1637,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout23(body)
-                foundLayout=23
+                self.foundLayout=23
                 
         except Exception as e:
             #print(e)
@@ -1522,9 +1648,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout24(body)
-                foundLayout=24
+                self.foundLayout=24
                 
         except Exception as e:
             #print(e)
@@ -1532,9 +1658,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout25(body)
-                foundLayout=25
+                self.foundLayout=25
                 
         except Exception as e:
             #print(e)
@@ -1542,9 +1668,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout26(body)
-                foundLayout=26
+                self.foundLayout=26
                 
         except Exception as e:
             #print(e)
@@ -1552,9 +1678,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout27(body)
-                foundLayout=27
+                self.foundLayout=27
                 
         except Exception as e:
             #print(e)
@@ -1563,9 +1689,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout28(body)
-                foundLayout=28
+                self.foundLayout=28
                 
         except Exception as e:
             #print(e)
@@ -1573,9 +1699,9 @@ class parser:
             pass     
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout29(body)
-                foundLayout=29
+                self.foundLayout=29
                 
         except Exception as e:
             #print(e)
@@ -1583,9 +1709,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout30(body)
-                foundLayout=30
+                self.foundLayout=30
                 
         except Exception as e:
             #print(e)
@@ -1593,9 +1719,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout31(body)
-                foundLayout=31
+                self.foundLayout=31
                 
         except Exception as e:
             #print(e)
@@ -1605,9 +1731,9 @@ class parser:
 
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout32(body)
-                foundLayout=32
+                self.foundLayout=32
                 
         except Exception as e:
             #print(e)
@@ -1615,9 +1741,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout33(body)
-                foundLayout=33
+                self.foundLayout=33
                 
         except Exception as e:
             #print(e)
@@ -1625,9 +1751,9 @@ class parser:
             pass
 
         try:
-            if foundLayout == False:
+            if self.foundLayout == False:
                 self.layout34(body)
-                foundLayout=34
+                self.foundLayout=34
                 
         except Exception as e:
             print(e)
@@ -1640,14 +1766,16 @@ class parser:
 
 
 
-        if foundLayout == False:
+        if self.foundLayout == False:
             print("-------------------------")
             print("Unknown layout!")
             x = self.listChildrenHelper(body)
             print(x)
             exit(".........")
         else:
-            print("layout: "+str(foundLayout)+ " "+self.page_head_title )
+            self.getSection()
+            print("layout: "+str(self.foundLayout)+ " "+self.page_head_title )
+            
         return
         exit()
 
@@ -1658,6 +1786,43 @@ class parser:
         #print(soup)
         #exit()
 
+
+
+
+
+
+
+
+
+    def getSection(self):
+        #
+        # Get Section and Armaholic ID from the breadcrumbs
+        #
+        try:
+            titleresult = self.page_title_element #soup.find(id="title")
+            
+            #print(titleresult)
+            #return
+            title_links = titleresult.find_all("a", href=True)
+            titleLinkList = []
+            for link in title_links:
+                titleLinkList.append(self.parseTitleLinkQueryString(link['href']))
+
+            # store the results
+            self.armaholicSection = titleLinkList[-2]
+            self.armaholicId = int(titleLinkList[-1])
+        except Exception as e:
+            self.armaholicSection = "UKNOWN"
+            pass
+        return self.armaholicSection
+
+    def parseTitleLinkQueryString(self,value):
+        parse_result = urlparse(value)
+        dict_result = parse_qs(parse_result.query)
+        try :
+            return dict_result['c'][0]
+        except Exception as e:
+            return int(dict_result['id'][0])  
 
     def findInfoTable(self):
         #
