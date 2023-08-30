@@ -75,7 +75,7 @@ for armaholicId in idList:
                 #pagelayout.armaholicId
 
                 if pagelayout.page_title_element == None:
-                    exit("Exit on: "+ str(pagelayout.foundLayout))
+                    exit("Exit on id: "+ str(armaholicId) +" Layout:"+ str(pagelayout.foundLayout))
                 #else:
                 #    print(pagelayout.armaholicSection)
                 #33000

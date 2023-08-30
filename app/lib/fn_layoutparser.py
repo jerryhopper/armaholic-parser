@@ -1211,11 +1211,20 @@ class parser:
         #print(wrap)
 
         ## this one sometimes has title, or fondonews as sectionlist.
-        ## need to re-check this.
+        ## on armaholicid: 9935 its stuck coz no 'title'
         self.page_title_element = wrap.find(id="title")
+        ## on armaholicid: its stuck coz no 'fondonews' 
         #self.page_title_element = body.find(id="fondonews")
 
-        #exit()
+        check = wrap.find(id="title")
+        if check == None:
+            check = body.find(id="fondonews")
+        
+        if check == None:
+            self.page_title_element = check
+        else:
+            raise Exception("Layout28 error!")
+
 
 
     def layout29(self,body):
@@ -1358,8 +1367,46 @@ class parser:
         return body
         
     
+    def layout35(self,body):
+        x = self.listChildrenHelper(body)
+        
+        
+        if x[0]!="div#bigwrap":
+            raise Exception("0 != div#bigwrap")
+        if x[1]!="tr":
+            raise Exception("1 != tr")
+        if x[2]!="div.footer":
+            raise Exception("2 != div.footer")
+    
+        self.page_title_element = body.find(id="fondonews")
+        #print(self.page_title_element)
+        #print(body)
+        #exit("-=Fin=-")
 
 
+    def layout36(self,body):
+        x = self.listChildrenHelper(body)
+        
+        #print(body)
+        if x[0]!="div#bigwrap":
+            raise Exception("0 != div#bigwrap")
+        
+        if "Access denied" in body.find(id="title").text:
+            #print( "ohh" )
+            self.page_title_element=0
+            self.armaholicSection="_site_pages_accessdenied"
+
+        #exit()
+        #if x[1]!="tr":
+        #    raise Exception("1 != tr")
+        #if x[2]!="div.footer":
+        #    raise Exception("2 != div.footer")
+        
+        
+        #self.page_title_element = body.find(id="fondonews")
+        #print(self.page_title_element)
+        #print(body)
+        #exit("-=Fin=-")
 
 
 
@@ -1797,10 +1844,28 @@ class parser:
                 self.foundLayout=34
                 
         except Exception as e:
+            #print(e)
+            #print("Not layout 34")
+            pass
+
+        try:
+            if self.foundLayout == False:
+                self.layout35(body)
+                self.foundLayout=35
+                
+        except Exception as e:
+            #print(e)
+            #print("Not layout 35")
+            pass
+
+        try:
+            if self.foundLayout == False:
+                self.layout36(body)
+                self.foundLayout=36
+                
+        except Exception as e:
             print(e)
-            print("Not layout 34")
-
-
+            print("Not layout 36")
 
 
 
