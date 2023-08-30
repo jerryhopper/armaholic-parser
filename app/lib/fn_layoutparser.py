@@ -1146,8 +1146,15 @@ class parser:
             raise Exception("1 != div")
         if x[2]!="div.footer":
             raise Exception("2 != div.footer")
+        
+        #x= body.find(id="container")
         #print(x)
         #exit()
+        #print(wrap)
+        self.page_title_element=0
+        self.armaholicSection="_site_pages_accessdenied"
+        #self.page_title_element = body.find(id="title")
+        #print(self.page_title_element)
 
 
     def layout27(self,body):
@@ -1160,8 +1167,8 @@ class parser:
             raise Exception("1 != table")
         if x[2]!="div.footer":
             raise Exception("2 != div.footer")
-        #print(x)
-        #exit()
+        print(x)
+        exit()
 
 
     def layout28(self,body):
@@ -1774,7 +1781,7 @@ class parser:
             exit(".........")
         else:
             self.getSection()
-            print("layout: "+str(self.foundLayout)+ " "+self.page_head_title )
+            #print("layout: "+str(self.foundLayout)+ " "+self.page_head_title )
             
         return
         exit()
