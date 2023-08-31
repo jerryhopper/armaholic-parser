@@ -21,19 +21,31 @@ dev notes:
 
 Armaholic object definition (items with * is required.)
 
-*- armaholic-id
-*- armaholic-section
+ - armaholic-id*
 
-*- item-title
-*- item-author
+ - armaholic-section*
+
+ - item-title*
+
+ - item-author*
+
  - item-author-website
+
  - item-version
-*- item-date
-*- item-filename
-*- item-filesize
+
+ - item-date*
+
+ - item-filename*
+
+ - item-filesize*
+
  - item-description
+
  - item-descr-images []
+
  - item-descr-videos []
+
  - item-descr-links []
+
  - item-descr-requirements []
  
