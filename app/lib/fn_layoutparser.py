@@ -136,6 +136,7 @@ class parser:
             raise Exception("7 != div.footer") 
         
         #print(wrap)
+        #exit()
         #self.page_title_element=0
         #self.armaholicSection="_site_pages"
         self.page_title_element = wrap.find(id="title")
@@ -1472,7 +1473,7 @@ class parser:
 
         try:
             if self.foundLayout == False:
-                result = self.layout1(body)
+                self.result = self.layout1(body)
                 self.foundLayout=1
                 
                 #print(self.armaholicSection)
