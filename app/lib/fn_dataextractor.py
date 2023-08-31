@@ -1,3 +1,6 @@
+from lib import fn_authortable
+from lib import fn_downloaddetails
+from lib import fn_contentarea
 
 class extractor:
     debug=1
@@ -82,15 +85,24 @@ class extractor:
         if subtitle == None:
             raise Exception("Missing div#subtitle")
         
+        table = fn_authortable.authortable(subtitle)
+        table.parseInfoTable()
+        
+
+
         # Get div.pagedlbg
         pagedlbg =  self.mysoup.find("div", {"class": "pagedlbg"})
         if pagedlbg == None:
             raise Exception("Missing div.pagedlbg")
+        contentarea = fn_contentarea.contentarea(pagedlbg)
         
+
         # Get the download element.
         downloadJsElement = pagedlbg.find("div", {"id": "hasJavaScript"})
         if downloadJsElement == None:
             raise Exception("Missing div#hasJavaScript")
         
-        
-        print(self.mysoup)
+        download = fn_downloaddetails.downloaddetails(downloadJsElement)
+        download.parseElement()
+
+        #print(self.mysoup)
