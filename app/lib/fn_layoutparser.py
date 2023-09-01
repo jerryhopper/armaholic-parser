@@ -1511,7 +1511,7 @@ class parser:
 
         try:
             if self.foundLayout == False:
-                self.layout4(body)
+                self.result = self.layout4(body)
                 self.foundLayout=4
         except Exception as e:
             #print(e)

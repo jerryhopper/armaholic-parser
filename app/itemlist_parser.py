@@ -7,6 +7,11 @@ if not os.path.exists("itemlist.txt"):
     print("itemlist.txt not found.")
     print("consider running analyzeCache.py first!")
 
+try:
+    startfromArmaholicId = int(sys.argv[1])
+except Exception as e:
+    startfromArmaholicId = 0
+    pass
 
 import csv
 rows = []
@@ -61,44 +66,46 @@ for layout in workerlist:
         # the cachefile.
         cachefile = "cache/page_"+str(armaholicId)+".html"
         # 
-        if os.path.isfile(cachefile):
-                
-                # loading the html 
-                try:
-                    f = open(cachefile,"r",encoding='utf-8')
-                    string = f.read()
-                    f.close()  
+        # armaholicId
+        if armaholicId >= startfromArmaholicId: 
+            if os.path.isfile(cachefile):
                     
-                    # initializin BS
-                    soup = BeautifulSoup(string, "html.parser")
-
-
-                    pagelayout = fn_layoutparser.parser(soup)
-                    print("l: "+str(pagelayout.foundLayout)+" aId: "+ str(pagelayout.armaholicId) +" "+pagelayout.armaholicSection)
-                    
-
-                    extractor = fn_dataextractor.extractor(pagelayout) 
-
-                    #print(pagelayout.armaholicId)
-                    #print(pagelayout.foundLayout)
-                    #print(pagelayout.page_head_title)
-                    #print(pagelayout.armaholicSection)
+                    # loading the html 
                     try:
-                        extractor.extract()
-                    except Exception as e:
-                        print(e)
-                    
-                    exit("-=Fin=-")
+                        f = open(cachefile,"r",encoding='utf-8')
+                        string = f.read()
+                        f.close()  
+                        
+                        # initializin BS
+                        soup = BeautifulSoup(string, "html.parser")
+
+
+                        pagelayout = fn_layoutparser.parser(soup)
+                        print("l: "+str(pagelayout.foundLayout)+" aId: "+ str(pagelayout.armaholicId) +" "+pagelayout.armaholicSection)
+                        
+
+                        extractor = fn_dataextractor.extractor(pagelayout) 
+
+                        #print(pagelayout.armaholicId)
+                        #print(pagelayout.foundLayout)
+                        #print(pagelayout.page_head_title)
+                        #print(pagelayout.armaholicSection)
+                        try:
+                            extractor.extract()
+                        except Exception as e:
+                            print(e)
+                        
+                        #exit("-=Fin=-")
 
 
 
-                except UnicodeDecodeError as e:
-                    print("UNICODE_ERROR "+armaholicId) 
-                    #with open(cachefile+".error","wb") as fw:
-                    #    fw.write(b"404")
-                    #os.remove(cachefile)
-                    exit()
-        
+                    except UnicodeDecodeError as e:
+                        print("UNICODE_ERROR "+armaholicId) 
+                        #with open(cachefile+".error","wb") as fw:
+                        #    fw.write(b"404")
+                        #os.remove(cachefile)
+                        exit()
+            
         
         
         i +=1

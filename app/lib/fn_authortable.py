@@ -12,8 +12,8 @@ class authortable:
 
         
     def parseUserLinkQueryString(self,value):
-        if self.debug == 1: print("-> parseUserLinkQueryString")
-        if self.debug == 1: print(value)
+        #if self.debug == 1: print("-> parseUserLinkQueryString")
+        #if self.debug == 1: print(value)
         parse_result = urlparse(value)
         dict_result = parse_qs(parse_result.query)
         return dict_result['id'][0]
